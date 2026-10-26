@@ -8,8 +8,7 @@ public class CenterString {
         if (input.length() < termlength) {
             int indentnum = (termlength - input.length()) / 2;
             String spaces = " ".repeat(indentnum);
-            String output = spaces + input;
-            return output;
+            return spaces + input;
         }
         return input;
     }
