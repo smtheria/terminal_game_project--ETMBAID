@@ -25,6 +25,9 @@ public class Game {
         FancyPrinter.println("4) Check your pockets ");
         FancyPrinter.println("5) Go back to bed ");
         FancyPrinter.print("What do you do? : ");
+        //This code below is just to test VS code commit/push
+        String choice = ("You chose option: " + tinydaddy.nextLine());
+        FancyPrinter.print(choice);
         tinydaddy.nextLine();
     }
 }
