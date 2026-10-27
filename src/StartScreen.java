@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//I know that I should have just created a class level scanner here, but I don't want to
+//I know that I should have just created a class level scanner here, but I don't want to-
 //rewrite the code so it's just gonna stay bad now. This problem will hopefully be fixed in the game class
 //Gemini is flaming my shit for coding this with a bunch of static methods instead of as an OOP class;
 //I will take this into account for rest of project
@@ -8,6 +8,10 @@ import java.util.Scanner;
 //I just learned about using while loops, so I will be using those to check user inputs in the future instead of recursion; 5:31pm, 10/26/26
 public class StartScreen {
 
+    //This is what gets called by the Main method to kick everything off
+    //It just uses FancyPrinter to print out the opening text, then calls startinputcheck(Scanner)
+    //This scanner continues getting passed around, because I didn't create the StartScreen as an object,
+    //so every method must receive a System.in scanner to work - 12:53pm, 10/27/26
     public static void startScreen(Scanner littledaddy) {
         FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("Welcome To..." + "\n"));

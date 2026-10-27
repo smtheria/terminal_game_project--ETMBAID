@@ -5,10 +5,14 @@ public class StatsClass {
     public double currentTime;
     public int currentMoney;
 
-    String[] nullchoice = new String[1];
-    Boolean[] nullchoiceb = new Boolean[1];
+    String[] nullchoices = new String[1];
+    Boolean[] nullchoicesb = new Boolean[1];
     String[] choices1 = new String[9];
     Boolean[] choices1b = new Boolean[9];
+    String[] choices2 = new String[0];
+    Boolean[] choices2b = new Boolean[0];
+    String[] choices3 = new String[0];
+    Boolean[] choices3b = new Boolean[0];
 
     //I will create a constructor just in case I need it later - I ended up needing it later
     public StatsClass() {
@@ -21,7 +25,7 @@ public class StatsClass {
             case 1:
                 return choices1;
             default:
-                return nullchoice;
+                return nullchoices;
         }
     }
 
@@ -30,7 +34,7 @@ public class StatsClass {
             case 1:
                 return choices1b;
             default:
-                return nullchoiceb;
+                return nullchoicesb;
         }
     }
 
@@ -42,8 +46,8 @@ public class StatsClass {
     }
 
     private void setArraysInit() {
-        nullchoice[0] = "this is a placeholder";
-        nullchoiceb[0] = false;
+        nullchoices[0] = "this is from a placeholder array";
+        nullchoicesb[0] = false;
         setArray1();
     }
 

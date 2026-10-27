@@ -6,7 +6,8 @@ import java.util.List;
 // (their methods, I mean. I still don't know how static classes work/matter)
 public class Game {
 
-    //the final modifier here is super unnecessary, as my game can only reach an ending once it is started.
+    //the final modifier here is super unnecessary, as my game can only reach an ending once it is started;
+    //I'll never be changing these values anyway I mean
     // My IDE just listed it as a problem when missing
     private final Scanner tinydaddy;
     private final StatsClass gameStats;
@@ -14,6 +15,7 @@ public class Game {
     String[] currentChoices;
     Boolean[] currentChoicesB;
 
+    //This is a constructor, you can tell because it has no return type
     public Game(Scanner littledaddy) {
         this.tinydaddy = littledaddy;
         this.gameStats = new StatsClass();
@@ -26,11 +28,19 @@ public class Game {
         FancyPrinter.printChars("You Chose: option " + choice());
     }
 
-    //This checks the current list of choices based on gamestate, prints out each valid choice,
-    //then checks if the user input a valid choice and sends that choice to the response method
-    private String choice() {
+    private void setChoices() {
         currentChoices = gameStats.GetChoices();
         currentChoicesB = gameStats.GetChoicesB();
+    }
+
+    //This method sets the choice arrays inside the Game class equal to the corresponding choices in StatsClass
+    //Different choices can be active at different times based on the gameState and a corresponding boolean
+    //Then, it creates a String list to save the integers of each valid choice printed as Strings instead
+    //I much prefer converting these possible input integers into Strings then checking against the user String input,
+    //Since that's what I already did in the StartScreen checks - 1:00pm, 10/27/26
+    //Also, this returns the "String" integer choice that was picked, which I will use for the return method
+    private String choice() {
+        setChoices();
         int selectnum = 1;
         List<String> selectnums = new ArrayList<>();
         FancyPrinter.println("\nYou can: ");
