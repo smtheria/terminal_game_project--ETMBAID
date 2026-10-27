@@ -7,44 +7,44 @@ import java.util.Scanner;
 //The reason I was avoiding that was I thought I had to instantiate the class inside itself, but that's not how that works - 10/26/26
 //I just learned about using while loops, so I will be using those to check user inputs in the future instead of recursion; 5:31pm, 10/26/26
 public class StartScreen {
-    public static void start(Scanner littledaddy) {
+
+    public static void startScreen(Scanner littledaddy) {
         FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("Welcome To..." + "\n"));
         FancyPrinter.printCenteredln(CenterString.space("ESCAPE THE MAFIA"));
         FancyPrinter.printCenteredln(CenterString.space("BY AI DROPSHIPPING" + "\n"));
         Wait.ms(200);
-        FancyPrinter.printCenteredln(CenterString.space("Start: 1"));
+        FancyPrinter.printCenteredln(CenterString.space("Start Game: 1"));
         FancyPrinter.printCenteredln(CenterString.space("Endings List: 2"));
         FancyPrinter.printCenteredln(CenterString.space("Close Game: 3"));
         FancyPrinter.printCentered(CenterString.space("Please select an option: "));
-        String startinput = littledaddy.nextLine();
-        startinput = startinput.trim();
-        StartScreen.startinputcheck(littledaddy, startinput);
+        StartScreen.startinputcheck(littledaddy);
     }
 
-    private static void startinputcheck(Scanner littledaddy, String input) {
+    private static void startinputcheck(Scanner littledaddy) {
+        String input = littledaddy.nextLine().trim();
         while (!(input.equals("1")) && !(input.equals("2")) && !(input.equals("3"))) {
             FancyPrinter.print("You didn't choose a valid option. Select again: ");
             input = littledaddy.nextLine().trim();
         }
-        StartScreen.callevent(littledaddy, input);
+        StartScreen.callevents(littledaddy, input);
     }
 
-    private static void callevent(Scanner littledaddy, String input) {
+    private static void callevents(Scanner littledaddy, String input) {
         if (input.equals("1")) {
             FancyPrinter.linebreak();
             Game GameStart = new Game(littledaddy);
-            GameStart.go();
+            GameStart.intro();
         } else if (input.equals("2")) {
-            FancyPrinter.linebreak();
-            StartScreen.displayendings(littledaddy);
+            StartScreen.endingsScreen(littledaddy);
         } else {
             System.out.print(CenterString.space("---You closed the game.---"));
         }
     }
 
-    private static void displayendings(Scanner littledaddy) {
+    private static void endingsScreen(Scanner littledaddy) {
         int customprintspeed = 60;
+        FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ENDINGS--"));
         FancyPrinter.println("Ending 1: ", customprintspeed);
         FancyPrinter.println("Ending 2: ", customprintspeed);
@@ -53,17 +53,17 @@ public class StartScreen {
         FancyPrinter.println("Ending 5: ", customprintspeed);
         FancyPrinter.println("Secret Ending: ???" + "\n", customprintspeed);
         FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ");
-        String endinginput = littledaddy.nextLine().trim();
-        StartScreen.endingsinputchecker(littledaddy, endinginput);
+        StartScreen.endingsinputcheck(littledaddy);
     }
 
-    private static void endingsinputchecker(Scanner littledaddy, String endinginput) {
-        while (!(endinginput.equals("1")) && !(endinginput.equals("2"))) {
+    private static void endingsinputcheck(Scanner littledaddy) {
+        String input = littledaddy.nextLine().trim();
+        while (!(input.equals("1")) && !(input.equals("2"))) {
             FancyPrinter.print("You didn't choose a valid option. Select again: ");
-            endinginput = littledaddy.nextLine().trim();
+            input = littledaddy.nextLine().trim();
         }
-        if (endinginput.equals("1")) {
-            StartScreen.start(littledaddy);
+        if (input.equals("1")) {
+            StartScreen.startScreen(littledaddy);
         } else {
             System.out.print(CenterString.space("---You closed the game.---"));
         }
