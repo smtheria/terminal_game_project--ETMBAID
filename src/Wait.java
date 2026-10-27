@@ -4,7 +4,7 @@ public class Wait {
         try {
             Thread.sleep(input);
         } catch (InterruptedException e) {
-            System.out.print("  !something fucked up and you threw an InterruptedException error!  ");
+            System.out.print(" !!!something fucked up and you threw an InterruptedException error!!! ");
         }
     }
 }

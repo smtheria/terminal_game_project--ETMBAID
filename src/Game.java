@@ -1,13 +1,16 @@
 import java.util.Scanner;
 
-//I will try to make this class object-oriented instead of static like all my other classes (their methods, I mean. I still don't know how static classes work/matter)
+//I will try to make this class object-oriented instead of static like all my other classes
+// (their methods, I mean. I still don't know how static classes work/matter)
 public class Game {
 
-    //the final modifier here is super unnecessary, as my game can only reach an ending once it is started. my IDE just listed it as a problem when missing
+    //the final modifier here is super unnecessary, as my game can only reach an ending once it is started.
+    // My IDE just listed it as a problem when missing
     private final Scanner tinydaddy;
 
     public Game(Scanner littledaddy) {
         this.tinydaddy = littledaddy;
+        StatsClass stats = new StatsClass();
     }
 
     public void go() {

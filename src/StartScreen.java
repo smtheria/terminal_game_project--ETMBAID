@@ -9,14 +9,14 @@ import java.util.Scanner;
 public class StartScreen {
     public static void start(Scanner littledaddy) {
         FancyPrinter.linebreak();
-        FancyPrinter.printCharsln(CenterString.space("Welcome To..." + "\n"));
-        FancyPrinter.printCharsln(CenterString.space("ESCAPE THE MAFIA"));
-        FancyPrinter.printCharsln(CenterString.space("BY AI DROPSHIPPING" + "\n"));
+        FancyPrinter.printCenteredln(CenterString.space("Welcome To..." + "\n"));
+        FancyPrinter.printCenteredln(CenterString.space("ESCAPE THE MAFIA"));
+        FancyPrinter.printCenteredln(CenterString.space("BY AI DROPSHIPPING" + "\n"));
         Wait.ms(200);
-        FancyPrinter.printCharsln(CenterString.space("Start: 1"));
-        FancyPrinter.printCharsln(CenterString.space("Endings List: 2"));
-        FancyPrinter.printCharsln(CenterString.space("Close Game: 3"));
-        FancyPrinter.printChars(CenterString.space("Please select an option: "));
+        FancyPrinter.printCenteredln(CenterString.space("Start: 1"));
+        FancyPrinter.printCenteredln(CenterString.space("Endings List: 2"));
+        FancyPrinter.printCenteredln(CenterString.space("Close Game: 3"));
+        FancyPrinter.printCentered(CenterString.space("Please select an option: "));
         String startinput = littledaddy.nextLine();
         startinput = startinput.trim();
         StartScreen.startinputcheck(littledaddy, startinput);
@@ -45,7 +45,7 @@ public class StartScreen {
 
     private static void displayendings(Scanner littledaddy) {
         int customprintspeed = 60;
-        FancyPrinter.printCharsln(CenterString.space("--POSSIBLE ENDINGS--"));
+        FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ENDINGS--"));
         FancyPrinter.println("Ending 1: ", customprintspeed);
         FancyPrinter.println("Ending 2: ", customprintspeed);
         FancyPrinter.println("Ending 3: ", customprintspeed);
