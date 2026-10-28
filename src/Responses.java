@@ -2,13 +2,12 @@ public class Responses {
 
     String choiceindex;
 
-    public Responses(StatsClass) {
+    public Responses(StatsClass gameStats) {
 
     }
 
     public void respond (String input) {
         choiceindex = input;
-        if
     }
 
     public void responses1(String choiceindex) {

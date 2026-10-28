@@ -20,7 +20,7 @@ public class Game {
     public Game(Scanner littledaddy) {
         this.tinydaddy = littledaddy;
         this.gameStats = new StatsClass();
-        this.responder = new Responses();
+        this.responder = new Responses(gameStats);
     }
 
     public void intro() {
