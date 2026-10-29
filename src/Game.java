@@ -12,11 +12,14 @@ public class Game {
     private final Scanner tinydaddy;
     private final StatsClass gameStats;
     private final Responses responder;
-    private final int introprintdelay = 120;
     String[] currentChoices;
     Boolean[] currentChoicesB;
 
     //This is a constructor, you can tell because it has no return type
+    //Note to stop checking other class: in StartScreen, the game starts by these lines of code:
+    //FancyPrinter.linebreak();
+    // Game GameStart = new Game(littledaddy);
+    //GameStart.intro();
     public Game(Scanner littledaddy) {
         this.tinydaddy = littledaddy;
         this.gameStats = new StatsClass();
@@ -24,10 +27,14 @@ public class Game {
     }
 
     public void intro() {
-        FancyPrinter.println("Wake up, Wake Up! ", introprintdelay);
+        int printdelay = 120;
+        boolean gamefinished = false;
+        FancyPrinter.println("Wake up, Wake Up! ", printdelay);
         String introscript = ("You find yourself in a disheveled apartment in New York City, at least that's what it looks like from your one, small window. You've got a piercing headache, and realize you have no idea who you are and why you're here. Looking around, your small apartment only contains a mattress on the floor (no cover), a bathroom, a poster, one cabinet, and a \"kitchen\", with a sink, fridge, and microwave. Nearest to your window, a personal computer is set up on a folding table and chair, with a sticky note pressed onto the black monitor. ");
-        FancyPrinter.printWrapln(introscript, introprintdelay);
-        responder.responses1(choice());
+        FancyPrinter.printWrapln(introscript, printdelay);
+        while (!gamefinished) {
+            gamefinished = responder.responses1(choice());
+        }
     }
 
     private void setChoices() {
@@ -35,6 +42,9 @@ public class Game {
         currentChoicesB = gameStats.GetChoicesB();
     }
 
+    public void nextchoice() {
+
+    }
     //This method sets the choice arrays inside the Game class equal to the corresponding choices in StatsClass
     //Different choices can be active at different times based on the gameState and a corresponding boolean
     //Then, it creates a String list to save the integers of each valid choice printed as Strings instead
@@ -62,7 +72,7 @@ public class Game {
             FancyPrinter.print("You didn't choose a valid option. Select again: ");
             input = tinydaddy.nextLine().trim();
         }
-        return (choiceindex.get((Integer.parseInt(input)-1)));
+        return (choiceindex.get((Integer.parseInt(input) - 1)));
     }
 
 }

@@ -37,8 +37,8 @@ public class StartScreen {
     private static void callevents(Scanner littledaddy, String input) {
         if (input.equals("1")) {
             FancyPrinter.linebreak();
-            Game GameStart = new Game(littledaddy);
-            GameStart.intro();
+            Game game = new Game(littledaddy);
+            game.intro();
         } else if (input.equals("2")) {
             StartScreen.endingsScreen(littledaddy);
         } else {
