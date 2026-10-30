@@ -2,9 +2,13 @@ public class StatsClass {
 
     //Time will be dealt with as military time internally
     public int gameState;
+    public int currentDay;
     public double currentTime;
     public int currentMoney;
+    public boolean allowDTMdisplay;
 
+    //The plan is for gameState 1 to be the room, gameState 2 as the computer,
+    // gameState 3 as fishing and gameState 4 as blackjack
     String[] nullchoices = new String[1];
     Boolean[] nullchoicesb = new Boolean[1];
     String[] choices1 = new String[9];
@@ -13,8 +17,9 @@ public class StatsClass {
     Boolean[] choices2b = new Boolean[0];
     String[] choices3 = new String[0];
     Boolean[] choices3b = new Boolean[0];
+    String[] choices4 = new String[0];
+    Boolean[] choices4b = new Boolean[0];
 
-    //I will create a constructor just in case I need it later - I ended up needing it later
     public StatsClass() {
         setStatsInit();
     }
@@ -38,16 +43,32 @@ public class StatsClass {
         }
     }
 
+    public String showDTM() {
+        double time = currentTime;
+        if (time % 1 == 0) {
+            return ("Day " + currentDay + ", " + ("" + time).replace(".", ":") + "0, $" + currentMoney + " - ");
+        } else if (time % 1 == .25) {
+            return ("Day " + currentDay + ", " + ("" + time).replace(".25", ":15") + ", $" + currentMoney + " - ");
+        } else if (time % 1 == .50) {
+            return ("Day " + currentDay + ", " + ("" + time).replace(".50", ":30") + ", $" + currentMoney + " - ");
+        } else if (time % 1 == .75) {
+            return ("Day " + currentDay + ", " + ("" + time).replace(".75", ":45") + ", $" + currentMoney + " - ");
+        }
+        return ("!ERROR! check .showDandT in StatsClass");
+    }
+
     private void setStatsInit() {
         gameState = 1;
+        currentDay = 1;
         currentTime = 8.00;
         currentMoney = 50;
+        allowDTMdisplay = false;
         setArraysInit();
     }
 
     private void setArraysInit() {
-        nullchoices[0] = "this is from a placeholder array";
-        nullchoicesb[0] = false;
+        nullchoices[0] = "!ERROR! the nullchoices arrays were used";
+        nullchoicesb[0] = true;
         setArray1();
     }
 

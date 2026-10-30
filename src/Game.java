@@ -9,6 +9,7 @@ public class Game {
     //the final modifier here is super unnecessary, as my game can only reach an ending once it is started;
     //I'll never be changing these values anyway I mean
     // My IDE just listed it as a problem when missing
+    //I take it back; listing this as final makes it easier to sanity check my work everytime I reread it - 10/30/26
     private final Scanner tinydaddy;
     private final StatsClass gameStats;
     private final Responses responder;
@@ -27,24 +28,16 @@ public class Game {
     }
 
     public void intro() {
-        int printdelay = 120;
+        int printdelay = 10;
         boolean gamefinished = false;
         FancyPrinter.println("Wake up, Wake Up! ", printdelay);
         String introscript = ("You find yourself in a disheveled apartment in New York City, at least that's what it looks like from your one, small window. You've got a piercing headache, and realize you have no idea who you are and why you're here. Looking around, your small apartment only contains a mattress on the floor (no cover), a bathroom, a poster, one cabinet, and a \"kitchen\", with a sink, fridge, and microwave. Nearest to your window, a personal computer is set up on a folding table and chair, with a sticky note pressed onto the black monitor. ");
         FancyPrinter.printWrapln(introscript, printdelay);
         while (!gamefinished) {
-            gamefinished = responder.responses1(choice());
+            gamefinished = responder.respond(choice());
         }
     }
 
-    private void setChoices() {
-        currentChoices = gameStats.GetChoices();
-        currentChoicesB = gameStats.GetChoicesB();
-    }
-
-    public void nextchoice() {
-
-    }
     //This method sets the choice arrays inside the Game class equal to the corresponding choices in StatsClass
     //Different choices can be active at different times based on the gameState and a corresponding boolean
     //Then, it creates a String list to save the integers of each valid choice printed as Strings instead
@@ -52,11 +45,16 @@ public class Game {
     //Since that's what I already did in the StartScreen checks - 1:00pm, 10/27/26
     //Also, this returns the "String" integer index of the needed response, which I will use for the return method
     private String choice() {
-        setChoices();
+        currentChoices = gameStats.GetChoices();
+        currentChoicesB = gameStats.GetChoicesB();
         int selectnum = 1;
         List<String> selectnums = new ArrayList<>();
         List<String> choiceindex = new ArrayList<>();
-        FancyPrinter.println("\nYou can: ");
+        if (gameStats.allowDTMdisplay) {
+            FancyPrinter.println("\n " + gameStats.showDTM() + "You can: ");
+        } else {
+            FancyPrinter.println("\nYou can: ");
+        }
         for (int c = 0; c < currentChoices.length; c++) {
             if (currentChoicesB[c] == true) {
                 FancyPrinter.println("" + selectnum + ") " + currentChoices[c]);

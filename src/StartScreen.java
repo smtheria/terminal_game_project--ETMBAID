@@ -56,7 +56,7 @@ public class StartScreen {
         FancyPrinter.println("Ending 4: ", customprintspeed);
         FancyPrinter.println("Ending 5: ", customprintspeed);
         FancyPrinter.println("Secret Ending: ???" + "\n", customprintspeed);
-        FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ");
+        FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ", customprintspeed);
         StartScreen.endingsinputcheck(littledaddy);
     }
 
