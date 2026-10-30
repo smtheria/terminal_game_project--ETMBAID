@@ -72,5 +72,4 @@ public class Game {
         }
         return (choiceindex.get((Integer.parseInt(input) - 1)));
     }
-
 }

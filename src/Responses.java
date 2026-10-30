@@ -6,6 +6,11 @@ public class Responses {
         this.gameStats = gameStats;
     }
 
+    //Right now, the game is iterating using this code:
+    //while (!gamefinished) {
+    //            gamefinished = responder.respond(choice());
+    //        }
+    //This will have to be changed later once other gameStates come into play, so more responses methdos will be required
     public boolean respond(String choiceindex) {
         int input = Integer.parseInt(choiceindex);
         System.out.println("");
