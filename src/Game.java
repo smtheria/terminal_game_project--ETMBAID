@@ -51,7 +51,7 @@ public class Game {
         List<String> selectnums = new ArrayList<>();
         List<String> choiceindex = new ArrayList<>();
         if (gameStats.allowDTMdisplay) {
-            FancyPrinter.println("\n " + gameStats.showDTM() + "You can: ");
+            FancyPrinter.println("\n" + gameStats.showDTM() + "You can: ");
         } else {
             FancyPrinter.println("\nYou can: ");
         }

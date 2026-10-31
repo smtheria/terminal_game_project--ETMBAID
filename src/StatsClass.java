@@ -49,8 +49,8 @@ public class StatsClass {
             return ("Day " + currentDay + ", " + ("" + time).replace(".", ":") + "0, $" + currentMoney + " - ");
         } else if (time % 1 == .25) {
             return ("Day " + currentDay + ", " + ("" + time).replace(".25", ":15") + ", $" + currentMoney + " - ");
-        } else if (time % 1 == .50) {
-            return ("Day " + currentDay + ", " + ("" + time).replace(".50", ":30") + ", $" + currentMoney + " - ");
+        } else if (time % 1 == .5) {
+            return ("Day " + currentDay + ", " + ("" + time).replace(".5", ":30") + ", $" + currentMoney + " - ");
         } else if (time % 1 == .75) {
             return ("Day " + currentDay + ", " + ("" + time).replace(".75", ":45") + ", $" + currentMoney + " - ");
         }

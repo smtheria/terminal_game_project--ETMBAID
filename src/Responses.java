@@ -15,10 +15,26 @@ public class Responses {
         int input = Integer.parseInt(choiceindex);
         System.out.println("");
         switch (input) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
+            case 0: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
+            case 1: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
+            case 2: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
+            case 3: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
             case 4: {
                 FancyPrinter.println("The poster: ");
                 FancyPrinter.printCenteredln(CenterString.space("------------------------------"));
@@ -36,6 +52,7 @@ public class Responses {
                 FancyPrinter.println("*casino unlocked* ");
                 gameStats.choices1b[4] = false;
                 gameStats.choices1b[3] = true;
+                gameStats.currentTime +=0.25;
                 return false;
             }
             case 5: {
@@ -43,6 +60,7 @@ public class Responses {
                 FancyPrinter.println("*fishing unlocked* ");
                 gameStats.choices1b[5] = false;
                 gameStats.choices1b[2] = true;
+                gameStats.currentTime +=0.25;
                 return false;
             }
             case 6: {
