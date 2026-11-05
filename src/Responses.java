@@ -70,10 +70,27 @@ public class Responses {
                 gameStats.allowDTMdisplay = true;
                 return false;
             }
-            case 7:
-            case 8:
+            case 7: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
+            case 8: {
+                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                gameStats.currentTime +=0.25;
+                return false;
+            }
             default:
-                return true;
+                FancyPrinter.println(" !!the default case of respond() was triggered!! ");
+            return true;
         }
+    }
+
+    //move the choice method to this class, 
+    // and rename this class to Logic or something so I can just handle all choice logistics in here
+    //then, the game should end when end returns true. choice returns the string choice#, response takes that 
+    //choice and does stuff, then implement the time check
+    public boolean end() {
+
     }
 }
