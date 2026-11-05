@@ -1,9 +1,50 @@
-public class Responses {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
+public class ChoiceLogic {
+
+    private final Scanner tinydaddy;
     private final StatsClass gameStats;
+    String[] currentChoices;
+    Boolean[] currentChoicesB;
 
-    public Responses(StatsClass gameStats) {
+    public ChoiceLogic(Scanner tinydaddy, StatsClass gameStats) {
+        this.tinydaddy = tinydaddy;
         this.gameStats = gameStats;
+    }
+
+    public String choice() {
+        //this if-else just checks if DTM can be displayed
+        if (gameStats.allowDTMdisplay) {
+            FancyPrinter.println("\n" + gameStats.showDTM() + "You can: ");
+        } else {
+            FancyPrinter.println("\nYou can: ");
+        }
+        List<String> selectnums = new ArrayList<>();
+        List<String> choiceindex = new ArrayList<>();
+        currentChoices = gameStats.GetChoices();
+        currentChoicesB = gameStats.GetChoicesB();
+        int selectnum = 1;
+        for (int c = 0; c < currentChoices.length; c++) {
+            if (currentChoicesB[c] == true) {
+                FancyPrinter.println(selectnum + ") " + currentChoices[c]);
+                String num = ("" + selectnum);
+                selectnums.add(num);
+                choiceindex.add("" + c);
+                selectnum += 1;
+            }
+        }
+        FancyPrinter.print("What do you do? : ");
+        String input = tinydaddy.nextLine().trim();
+        while (!selectnums.contains(input)) {
+            FancyPrinter.print("You didn't choose a valid option. Select again: ");
+            input = tinydaddy.nextLine().trim();
+        }
+        //I had to look this up cause I forgot, but .get for lists-
+        //will return whatever the type of the list is;
+        //choiceindex is a string list
+        return (choiceindex.get((Integer.parseInt(input) - 1)));
     }
 
     //Right now, the game is iterating using this code:
@@ -17,22 +58,22 @@ public class Responses {
         switch (input) {
             case 0: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 1: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 2: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 3: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 4: {
@@ -52,7 +93,7 @@ public class Responses {
                 FancyPrinter.println("*casino unlocked* ");
                 gameStats.choices1b[4] = false;
                 gameStats.choices1b[3] = true;
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 5: {
@@ -60,7 +101,7 @@ public class Responses {
                 FancyPrinter.println("*fishing unlocked* ");
                 gameStats.choices1b[5] = false;
                 gameStats.choices1b[2] = true;
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 6: {
@@ -72,17 +113,17 @@ public class Responses {
             }
             case 7: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             case 8: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime +=0.25;
+                gameStats.currentTime += 0.25;
                 return false;
             }
             default:
                 FancyPrinter.println(" !!the default case of respond() was triggered!! ");
-            return true;
+                return true;
         }
     }
 
@@ -91,6 +132,6 @@ public class Responses {
     //then, the game should end when end returns true. choice returns the string choice#, response takes that 
     //choice and does stuff, then implement the time check
     public boolean end() {
-
+        return false;
     }
 }

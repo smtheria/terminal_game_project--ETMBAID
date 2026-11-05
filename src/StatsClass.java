@@ -29,6 +29,12 @@ public class StatsClass {
         switch (gameState) {
             case 1:
                 return choices1;
+            case 2:
+                return choices2;
+            case 3:
+                return choices3;
+            case 4:
+                return choices4;
             default:
                 return nullchoices;
         }
@@ -38,6 +44,12 @@ public class StatsClass {
         switch (gameState) {
             case 1:
                 return choices1b;
+            case 2:
+                return choices2b;
+            case 3:
+                return choices3b;
+            case 4:
+                return choices4b;
             default:
                 return nullchoicesb;
         }
@@ -54,7 +66,7 @@ public class StatsClass {
         } else if (time % 1 == .75) {
             return ("Day " + currentDay + ", " + ("" + time).replace(".75", ":45") + ", $" + currentMoney + " - ");
         }
-        return ("!ERROR! check .showDandT in StatsClass");
+        return ("!ERROR! check showDTM() in StatsClass");
     }
 
     private void setStatsInit() {

@@ -38,7 +38,7 @@ public class StartScreen {
         if (input.equals("1")) {
             FancyPrinter.linebreak();
             Game game = new Game(littledaddy);
-            game.intro();
+            game.start();
         } else if (input.equals("2")) {
             StartScreen.endingsScreen(littledaddy);
         } else {
