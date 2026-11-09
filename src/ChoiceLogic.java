@@ -52,7 +52,7 @@ public class ChoiceLogic {
     //            gamefinished = responder.respond(choice());
     //        }
     //This will have to be changed later once other gameStates come into play, so more responses methdos will be required
-    public void respond(String choiceindex) {
+    public boolean respond(String choiceindex) {
         int input = Integer.parseInt(choiceindex);
         System.out.println("");
         switch (input) {
@@ -112,8 +112,8 @@ public class ChoiceLogic {
                 break;
             }
             case 7: {
-                FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime += 0.25;
+                FancyPrinter.println("Nothing happens because this is placeholder code. this skips to 19:00");
+                gameStats.currentTime = 19.0;
                 break;
             }
             case 8: {
@@ -125,11 +125,33 @@ public class ChoiceLogic {
                 FancyPrinter.println(" !!the default case of respond() was triggered!! ");
                 break;
         }
-        mafiacheck();
+        return mafiacheck(0);
     }
 
-    private void mafiacheck() {
-        if gameStats.currentTime
+    private boolean mafiacheck(int deathNum) {
+        if (gameStats.currentTime == 20.0) {
+            switch (deathNum) {
+                case 0: {
+                    FancyPrinter.printWrapln("It's 8:00 PM, and you hear a loud banging on your door. \"Open up buddy! Daily protection fee, it's time to pay up!\" ");
+                    if (gameStats.currentMoney >= 50) {
+                        FancyPrinter.printWrapln("\"Alright, I'm coming!\" You check your pocket, whip your wallet out and strut to the door. \"Here you go dude.\" \"The man takes the money. \"Good, we'll be back tomorrow. Remember, 50 bucks at eight o' clock sharp, every day!\" ");
+                        gameStats.currentMoney -= 50;
+                        if (gameStats.choices1b[6] == true) {
+                            gameStats.choices1b[6] = false;
+                            gameStats.allowDTMdisplay = true;
+                            FancyPrinter.println("*date, time and cash display unlocked* ");
+                        }
+                    } else {
+                        FancyPrinter.printWrapln("\"I don't have it!\" You check your pockets, but you don't have enough money. \"What do you mean you don't have it? You know the rules!\" A flurry of bullets shreds your wooden door to pieces. You fall to the ground, and the mobster kicks you in the stomach. \"That's why you don't disrespect the mafia buddy.\" You feel your vision fading as the bullets punch into you, and realize that this is the end. ");
+                        FancyPrinter.linebreak();
+                        FancyPrinter.printCenteredln(CenterString.space("*GAME OVER* "));
+                        FancyPrinter.printCenteredln(CenterString.space("*You unlocked the Swimming With the Fishes ending* "));
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public boolean end() {

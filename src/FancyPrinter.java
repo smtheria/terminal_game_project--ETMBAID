@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class FancyPrinter {
 
     //I just learned about the final modifier, so I'll use it to sort out the default variables for FancyPrinter - 12:18pm, 10/25/26
-    private static final int defSpaceDelayms = 90;
+    private static final int defSpaceDelayms = 1;
     private static final int defCharDelayms = 30;
     private static final int defWrapLength = 80;
 

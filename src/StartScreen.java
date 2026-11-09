@@ -50,7 +50,7 @@ public class StartScreen {
         int customprintspeed = 60;
         FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ENDINGS--"));
-        FancyPrinter.println("Ending 1: ", customprintspeed);
+        FancyPrinter.println("Ending 1: Swimming With the Fishes ", customprintspeed);
         FancyPrinter.println("Ending 2: ", customprintspeed);
         FancyPrinter.println("Ending 3: ", customprintspeed);
         FancyPrinter.println("Ending 4: ", customprintspeed);

@@ -31,8 +31,9 @@ public class Game {
         FancyPrinter.printWrapln(introscript, printdelay);
         boolean gamefinished = false;
         while (!gamefinished) {
-            gameLogic.respond(gameLogic.choice());
+            gamefinished = gameLogic.respond(gameLogic.choice());
         }
+        System.out.println(CenterString.space("---You closed the game.---"));
     }
 
     //OLD COMMENTS FOR choice()
