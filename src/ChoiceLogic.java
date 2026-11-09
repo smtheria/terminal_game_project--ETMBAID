@@ -52,29 +52,29 @@ public class ChoiceLogic {
     //            gamefinished = responder.respond(choice());
     //        }
     //This will have to be changed later once other gameStates come into play, so more responses methdos will be required
-    public boolean respond(String choiceindex) {
+    public void respond(String choiceindex) {
         int input = Integer.parseInt(choiceindex);
         System.out.println("");
         switch (input) {
             case 0: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 1: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 2: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 3: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 4: {
                 FancyPrinter.println("The poster: ");
@@ -94,7 +94,7 @@ public class ChoiceLogic {
                 gameStats.choices1b[4] = false;
                 gameStats.choices1b[3] = true;
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 5: {
                 FancyPrinter.printWrapln("You open up the cabinet, finding a fishing rod and tackle box, along with a map. A yellow sticky note on the map says: [it takes an hour to get to the lake from here.] ");
@@ -102,35 +102,36 @@ public class ChoiceLogic {
                 gameStats.choices1b[5] = false;
                 gameStats.choices1b[2] = true;
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 6: {
                 FancyPrinter.printWrapln("You thumb around your pockets, finding your wallet and a wristwatch. Sadly, the wristwatch only reads in military time :( . ");
                 FancyPrinter.println("*date, time and cash display unlocked* ");
                 gameStats.choices1b[6] = false;
                 gameStats.allowDTMdisplay = true;
-                return false;
+                break;
             }
             case 7: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             case 8: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.currentTime += 0.25;
-                return false;
+                break;
             }
             default:
                 FancyPrinter.println(" !!the default case of respond() was triggered!! ");
-                return true;
+                break;
         }
+        mafiacheck();
     }
 
-    //move the choice method to this class, 
-    // and rename this class to Logic or something so I can just handle all choice logistics in here
-    //then, the game should end when end returns true. choice returns the string choice#, response takes that 
-    //choice and does stuff, then implement the time check
+    private void mafiacheck() {
+        if gameStats.currentTime
+    }
+
     public boolean end() {
         return false;
     }

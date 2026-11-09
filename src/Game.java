@@ -31,7 +31,7 @@ public class Game {
         FancyPrinter.printWrapln(introscript, printdelay);
         boolean gamefinished = false;
         while (!gamefinished) {
-            gamefinished = gameLogic.respond(gameLogic.choice());
+            gameLogic.respond(gameLogic.choice());
         }
     }
 
