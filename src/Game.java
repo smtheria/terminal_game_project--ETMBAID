@@ -25,22 +25,18 @@ public class Game {
 
     public void start() {
         //this int makes the intro print faster; change this variable after testing
-        int printdelay = 10;
+        int printdelay = 1;
         FancyPrinter.println("Wake up, Wake Up! ", printdelay);
         String introscript = ("You find yourself in a disheveled apartment in New York City, at least that's what it looks like from your one, small window. You've got a piercing headache, and realize you have no idea who you are and why you're here. Looking around, your small apartment only contains a mattress on the floor (no cover), a bathroom, a poster, one cabinet, and a \"kitchen\", with a sink, fridge, and microwave. Nearest to your window, a personal computer is set up on a folding table and chair, with a sticky note pressed onto the black monitor. ");
         FancyPrinter.printWrapln(introscript, printdelay);
         boolean gamefinished = false;
         while (!gamefinished) {
-            gamefinished = gameLogic.respond(gameLogic.choice());
+            switch (gameStats.gameState) {
+                case 1:
+                    gamefinished = gameLogic.responses1(gameLogic.choice());
+                break;
+            }
         }
         System.out.println(CenterString.space("---You closed the game.---"));
     }
-
-    //OLD COMMENTS FOR choice()
-    //This method sets the choice arrays inside the Game class equal to the corresponding choices in StatsClass
-    //Different choices can be active at different times based on the gameState and a corresponding boolean
-    //Then, it creates a String list to save the integers of each valid choice printed as Strings instead
-    //I much prefer converting these possible input integers into Strings then checking against the user String input,
-    //Since that's what I already did in the StartScreen checks - 1:00pm, 10/27/26
-    //Also, this returns the "String" integer index of the needed response, which I will use for the return method
 }

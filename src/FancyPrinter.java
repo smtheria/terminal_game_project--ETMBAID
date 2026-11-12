@@ -8,7 +8,8 @@ public class FancyPrinter {
 
     //I just learned about the final modifier, so I'll use it to sort out the default variables for FancyPrinter - 12:18pm, 10/25/26
     private static final int defSpaceDelayms = 1;
-    private static final int defCharDelayms = 30;
+    //the average english word is 5 letters, so def char delay should be around 1/5 of def space delay in the final game version - 9:12am, 11/10/26
+    private static final int defCharDelayms = 1;
     private static final int defWrapLength = 80;
 
     //FancyPrinter goes through each index and prints it, waiting a delay for each space
@@ -37,7 +38,7 @@ public class FancyPrinter {
     }
 
     //While writing this method, I asked Gemini how actual programs do text wrapping, which I originally called indentation
-    //Standard approach is called Greedy Method; you look at line length, and if you print a character exceeding line length,
+    //Standard approach is called Greedy Method; you look at line length, and if you would print a character exceeding line length,
     //Then you insert a \n where you last passed a " "
     //To do that, I'm gonna have to play with the code a little bit; the printing method here may differ from the other methods
     //I'm starting by printing the space before waiting now; actually, I should change the other methods for consistency - 12:07am, 10/25/26
@@ -83,6 +84,9 @@ public class FancyPrinter {
                 System.out.print(character);
             }
         }
+        //VS code keeps asking me to add this, even though I thought-
+        //the scanner just gets auto deleted once the method is finished running
+        wordreader.close();
     }
 
     public static void printWrap(String input) {

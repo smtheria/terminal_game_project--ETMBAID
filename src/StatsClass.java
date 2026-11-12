@@ -6,13 +6,15 @@ public class StatsClass {
     public double currentTime;
     public int currentMoney;
     public boolean allowDTMdisplay;
+    public int lastFridgemeal;
+    public int chiliGodcount;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
     String[] nullchoices = new String[1];
     Boolean[] nullchoicesb = new Boolean[1];
-    String[] choices1 = new String[9];
-    Boolean[] choices1b = new Boolean[9];
+    String[] choices1 = new String[10];
+    Boolean[] choices1b = new Boolean[10];
     String[] choices2 = new String[0];
     Boolean[] choices2b = new Boolean[0];
     String[] choices3 = new String[0];
@@ -75,6 +77,8 @@ public class StatsClass {
         currentTime = 8.00;
         currentMoney = 50;
         allowDTMdisplay = false;
+        lastFridgemeal = 0;
+        chiliGodcount = 0;
         setArraysInit();
     }
 
@@ -92,8 +96,9 @@ public class StatsClass {
         choices1[4] = "Read the poster ";
         choices1[5] = "Check the Cabinet ";
         choices1[6] = "Check your pockets ";
-        choices1[7] = "Doomscroll";
-        choices1[8] = "Go back to bed";
+        choices1[7] = "Eat something out the fridge ";
+        choices1[8] = "Doomscroll";
+        choices1[9] = "Go back to bed";
         choices1b[0] = true;
         choices1b[1] = false;
         choices1b[2] = false;
@@ -103,5 +108,6 @@ public class StatsClass {
         choices1b[6] = true;
         choices1b[7] = true;
         choices1b[8] = true;
+        choices1b[9] = true;
     }
 }

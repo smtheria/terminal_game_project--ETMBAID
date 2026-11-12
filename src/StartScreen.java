@@ -8,10 +8,12 @@ import java.util.Scanner;
 //I just learned about using while loops, so I will be using those to check user inputs in the future instead of recursion; 5:31pm, 10/26/26
 public class StartScreen {
 
-    //This is what gets called by the Main method to kick everything off
-    //It just uses FancyPrinter to print out the opening text, then calls startinputcheck(Scanner)
-    //This scanner continues getting passed around, because I didn't create the StartScreen as an object,
-    //so every method must receive a System.in scanner to work - 12:53pm, 10/27/26
+    // This is what gets called by the Main method to kick everything off
+    // It just uses FancyPrinter to print out the opening text, then calls
+    // startinputcheck(Scanner)
+    // This scanner continues getting passed around, because I didn't create the
+    // StartScreen as an object,
+    // so every method must receive a System.in scanner to work - 12:53pm, 10/27/26
     public static void startScreen(Scanner littledaddy) {
         FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("Welcome To..." + "\n"));
@@ -19,7 +21,7 @@ public class StartScreen {
         FancyPrinter.printCenteredln(CenterString.space("BY AI DROPSHIPPING" + "\n"));
         Wait.ms(200);
         FancyPrinter.printCenteredln(CenterString.space("Start Game: 1"));
-        FancyPrinter.printCenteredln(CenterString.space("Endings List: 2"));
+        FancyPrinter.printCenteredln(CenterString.space("Endings/Achievements List: 2"));
         FancyPrinter.printCenteredln(CenterString.space("Close Game: 3"));
         FancyPrinter.printCentered(CenterString.space("Please select an option: "));
         StartScreen.startinputcheck(littledaddy);
@@ -51,11 +53,14 @@ public class StartScreen {
         FancyPrinter.linebreak();
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ENDINGS--"));
         FancyPrinter.println("Ending 1: Swimming With the Fishes ", customprintspeed);
-        FancyPrinter.println("Ending 2: ", customprintspeed);
+        FancyPrinter.println("Ending 2: Sleeping With the Fishes ", customprintspeed);
         FancyPrinter.println("Ending 3: ", customprintspeed);
         FancyPrinter.println("Ending 4: ", customprintspeed);
         FancyPrinter.println("Ending 5: ", customprintspeed);
         FancyPrinter.println("Secret Ending: ???" + "\n", customprintspeed);
+        FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ACHIEVEMENTS--"));
+        FancyPrinter.println("Achievement 1: God of Chili's");
+        System.out.println("");
         FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ", customprintspeed);
         StartScreen.endingsinputcheck(littledaddy);
     }
