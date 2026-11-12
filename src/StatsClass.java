@@ -77,7 +77,8 @@ public class StatsClass {
         currentTime = 8.00;
         currentMoney = 50;
         allowDTMdisplay = false;
-        lastFridgemeal = 0;
+        //I don't want the ice-soup thing to be the first option cause player might think that's the only one
+        lastFridgemeal = 5;
         chiliGodcount = 0;
         setArraysInit();
     }

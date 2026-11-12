@@ -97,6 +97,7 @@ public class ChoiceLogic {
                 System.out.println("");
                 FancyPrinter.printCenteredln(CenterString.space("148 Mulberry Street, New York"));
                 FancyPrinter.printCenteredln(CenterString.space("------------------------------"));
+                System.out.println("");
                 FancyPrinter.printWrapln("A yellow sticky note on the poster reads: [reminder to self: it takes about one hour to get here, then another hour to get back.] ");
                 FancyPrinter.println("*casino unlocked* ");
                 gameStats.choices1b[4] = false;
@@ -205,9 +206,19 @@ public class ChoiceLogic {
                     FancyPrinter.printWrapln("This whipping out of the wallet, however, does not unlock the time and money display, as you would've had to interact with the check pockets option in your apartment (generously coded and provided to you by the developer btw), which you haven't done for some inexplicable reason. ");
                 }
                 System.out.println("");
-                FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for day " + (gameStats.currentDay + 1) + ". ");
-                gameStats.currentDay +=1;
-                gameStats.currentTime = 8.00;
+                if (gameStats.currentMoney >= 400) {
+                    FancyPrinter.println("You've accrued enough money to escape to Romania. ");
+                    //THIS CHECK IS UNIFHINISHED MUST FINISH LATER
+                    String input = tinydaddy.nextLine().trim();
+                    while (!selectnums.contains(input)) {
+                        FancyPrinter.print("You didn't choose a valid option. Select again: ");
+                        input = tinydaddy.nextLine().trim();
+                    }
+                } else {
+                    FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for day " + (gameStats.currentDay + 1) + ". ");
+                    gameStats.currentDay +=1;
+                    gameStats.currentTime = 8.00;
+                } 
             } else {
                 FancyPrinter.printWrapln("\"I don't have it.\" You check your pockets, but you don't have enough money. \"What do you mean you don't have it? You know the rules!\" A flurry of bullets shreds your wooden door to pieces. You fall to the ground, and the mobster kicks you in the stomach. \"That's why you don't disrespect the mafia buddy.\" You feel your vision fading as the bullets punch into you, and realize that this is the end. ");
                 FancyPrinter.linebreak();

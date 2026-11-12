@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class FancyPrinter {
 
     //I just learned about the final modifier, so I'll use it to sort out the default variables for FancyPrinter - 12:18pm, 10/25/26
-    private static final int defSpaceDelayms = 1;
+    private static final int defSpaceDelayms = 75;
     //the average english word is 5 letters, so def char delay should be around 1/5 of def space delay in the final game version - 9:12am, 11/10/26
-    private static final int defCharDelayms = 1;
+    private static final int defCharDelayms = 15;
     private static final int defWrapLength = 80;
 
     //FancyPrinter goes through each index and prints it, waiting a delay for each space
