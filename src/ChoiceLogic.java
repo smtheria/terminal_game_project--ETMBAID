@@ -48,25 +48,6 @@ public class ChoiceLogic {
         return (choiceindex.get((Integer.parseInt(input) - 1)));
     }
 
-    public boolean responses2(String choiceindex) {
-        int input = Integer.parseInt(choiceindex);
-        System.out.println("");
-        switch (input) {
-            case 0: {
-                FancyPrinter.println("You Chose test choice 1!");
-                gameStats.choices2b[0] = false;
-                return false;
-            }
-            case 1: {
-                FancyPrinter.println("You Chose test choice 2!");
-                gameStats.choices2b[1] = false;
-                return false;
-            }
-        }
-        FancyPrinter.println("Something went wrong in responses2()");
-        return true;
-    }
-
     private static boolean stringTointCheck(String input) {
         if (input.isEmpty()) {
             return false;
@@ -102,7 +83,7 @@ public class ChoiceLogic {
                 break;
             }
             case 1: {
-                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                FancyPrinter.println("You sit down at the desk and boot up the computer. ");
                 gameStats.gameState = 2;
                 return false;
             }
@@ -110,7 +91,6 @@ public class ChoiceLogic {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
                 gameStats.gameState = 3;
                 return false;
-
             }
             case 3: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
@@ -291,5 +271,24 @@ public class ChoiceLogic {
             }
         }
         return false;
+    }
+
+    public boolean responses2(String choiceindex) {
+        int input = Integer.parseInt(choiceindex);
+        System.out.println("");
+        switch (input) {
+            case 0: {
+                FancyPrinter.println("You Chose test choice 1!");
+                gameStats.choices2b[0] = false;
+                return false;
+            }
+            case 1: {
+                FancyPrinter.println("You Chose test choice 2!");
+                gameStats.choices2b[1] = false;
+                return false;
+            }
+        }
+        FancyPrinter.println("Something went wrong in responses2()");
+        return true;
     }
 }
