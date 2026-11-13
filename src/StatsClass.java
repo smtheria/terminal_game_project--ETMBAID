@@ -117,8 +117,8 @@ public class StatsClass {
 
     private void setArray2() {
         choices2[0] = "Test choice 1";
-        choices2b[0] = true;
         choices2[1] = "Test choice 2";
+        choices2b[0] = true;
         choices2b[1] = true;
     }
 }
