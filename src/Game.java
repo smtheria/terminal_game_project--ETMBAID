@@ -24,19 +24,23 @@ public class Game {
     }
 
     public void start() {
-        //this int makes the intro print faster; change this variable after testing
-        int printdelay = 1;
-        FancyPrinter.println("Wake up, Wake Up! ", printdelay);
+        FancyPrinter.println("Wake up, Wake Up! ");
         String introscript = ("You find yourself in a disheveled apartment in New York City, at least that's what it looks like from your one, small window. You've got a piercing headache, and realize you have no idea who you are and why you're here. Looking around, your small apartment only contains a mattress on the floor (no cover), a bathroom, a poster, one cabinet, and a \"kitchen\", with a sink, fridge, and microwave. Nearest to your window, a personal computer is set up on a folding table and chair, with a sticky note pressed onto the black monitor. ");
-        FancyPrinter.printWrapln(introscript, printdelay);
+        FancyPrinter.printWrapln(introscript);
         boolean gamefinished = false;
         while (!gamefinished) {
             switch (gameStats.gameState) {
-                case 1:
+                case 1: {
                     gamefinished = gameLogic.responses1(gameLogic.choice());
-                break;
+                    break;
+                }
+                case 2: {
+                    gamefinished = gameLogic.responses2(gameLogic.choice());
+                }
+
             }
         }
         System.out.println(CenterString.space("---You closed the game.---"));
+        System.out.println("");
     }
 }

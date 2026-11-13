@@ -42,10 +42,41 @@ public class ChoiceLogic {
             FancyPrinter.print("You didn't choose a valid option. Select again: ");
             input = tinydaddy.nextLine().trim();
         }
-        //I had to look this up cause I forgot, but .get for lists-
-        //will return whatever the type of the list is;
+        //I had to look this up cause I forgot, but .get(int index#) for lists
+        //will return whatever type the type of the list is;
         //choiceindex is a string list
         return (choiceindex.get((Integer.parseInt(input) - 1)));
+    }
+
+    public boolean responses2(String choiceindex) {
+        int input = Integer.parseInt(choiceindex);
+        System.out.println("");
+        switch (input) {
+            case 0: {
+                FancyPrinter.println("You Chose test choice 1!");
+                gameStats.choices2b[0] = false;
+                return false;
+            }
+            case 1: {
+                FancyPrinter.println("You Chose test choice 2!");
+                gameStats.choices2b[1] = false;
+                return false;
+            }
+        }
+        FancyPrinter.println("Something went wrong in responses2()");
+        return true;
+    }
+
+    private static boolean stringTointCheck(String input) {
+        if (input.isEmpty()) {
+            return false;
+        }
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean responses1(String choiceindex) {
@@ -72,17 +103,19 @@ public class ChoiceLogic {
             }
             case 1: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                break;
+                gameStats.gameState = 2;
+                return false;
             }
             case 2: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime += 0.25;
-                break;
+                gameStats.gameState = 3;
+                return false;
+
             }
             case 3: {
                 FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.currentTime += 0.25;
-                break;
+                gameStats.gameState = 4;
+                return false;
             }
             case 4: {
                 FancyPrinter.println("The poster: ");
@@ -119,9 +152,9 @@ public class ChoiceLogic {
                 break;
             }
             case 7: {
-                int randomfood = (int) ((Math.random()*5)+1);
+                int randomfood = (int) ((Math.random() * 5) + 1);
                 while (randomfood == gameStats.lastFridgemeal) {
-                    randomfood = (int) ((Math.random()*5)+1);
+                    randomfood = (int) ((Math.random() * 5) + 1);
                 }
                 switch (randomfood) {
                     case 1: {
@@ -129,7 +162,7 @@ public class ChoiceLogic {
                         FancyPrinter.println("You ate for 15 minutes");
                         gameStats.lastFridgemeal = 1;
                         break;
-                    } 
+                    }
                     case 2: {
                         FancyPrinter.printWrapln("You see some hotdogs in the fridge, but remember that you don't own a stove and get a little sadder.");
                         FancyPrinter.println("You \"ate\" for 15 minutes");
@@ -146,7 +179,7 @@ public class ChoiceLogic {
                         FancyPrinter.printWrapln("You look in the fridge ang get a little depressed at what you see, so you use some DoorDash points to get some Chili's instead. Why are you doordashing Chili's you freak??");
                         FancyPrinter.println("You ate for 15 minutes. ");
                         gameStats.lastFridgemeal = 4;
-                        gameStats.chiliGodcount +=1;
+                        gameStats.chiliGodcount += 1;
                         if (gameStats.chiliGodcount == 5) {
                             System.out.println("");
                             FancyPrinter.println("*You unlocked the achievement: God of Chili's!* ");
@@ -160,19 +193,33 @@ public class ChoiceLogic {
                         break;
                     }
                 }
-                gameStats.currentTime +=.25;
+                gameStats.currentTime += .25;
                 break;
             }
             case 8: {
-                FancyPrinter.println("Nothing happens because this is placeholder code. skip to 19:00");
-                gameStats.currentTime = 19.00;
+                FancyPrinter.print("How many hours would you like to doomscroll for (integers only)? ");
+                String DSinput = tinydaddy.nextLine().trim();
+                while (!ChoiceLogic.stringTointCheck(DSinput)) {
+                    FancyPrinter.print("You didn't input an integer. Try again: ");
+                    DSinput = tinydaddy.nextLine().trim();
+                }
+                FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
+                double hours = (double) Integer.parseInt(DSinput);
+                if (gameStats.currentTime + hours >= 20) {
+                    gameStats.currentTime = 20.0;
+                    FancyPrinter.println("You open up reels and start scrolling, but you get cut short by a sound. ");
+                    return mafiachecks1(0);
+                } else {
+                    FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
+                    gameStats.currentTime += hours;
+                }
                 break;
             }
             case 9: {
                 int sleepytime;
-                if (gameStats.currentTime >=16.00) {
+                if (gameStats.currentTime >= 16.00) {
                     sleepytime = 5;
-                }else {
+                } else {
                     sleepytime = (int) ((Math.random() * 4) + 1);
                 }
                 FancyPrinter.println("You get back into bed to take a nap during daytime, because you are a bum. You slept for: " + sleepytime + " hours. ");
@@ -207,18 +254,34 @@ public class ChoiceLogic {
                 }
                 System.out.println("");
                 if (gameStats.currentMoney >= 400) {
-                    FancyPrinter.println("You've accrued enough money to escape to Romania. ");
-                    //THIS CHECK IS UNIFHINISHED MUST FINISH LATER
+                    FancyPrinter.println("You've accrued enough money to escape to Romania.\n ");
+                    FancyPrinter.println("You can: ");
+                    FancyPrinter.println("1) Buy your Ticket and Escape. ");
+                    FancyPrinter.println("2) Go to bed.\n ");
+                    FancyPrinter.print("What do you do?: ");
                     String input = tinydaddy.nextLine().trim();
-                    while (!selectnums.contains(input)) {
+                    while (!(input.equals("1") || input.equals("2"))) {
                         FancyPrinter.print("You didn't choose a valid option. Select again: ");
                         input = tinydaddy.nextLine().trim();
                     }
+                    if (input.equals("1")) {
+                        System.out.println("");
+                        FancyPrinter.printWrapln("You open up the computer one last time, buy your ticket, and uber to LaGuardia. The flight is peaceful, and after landing in Romania, Tom Pearl greets you with open arms. Now, you spend your days relaxing at the beach, listening to the rhythmic crash of the waves, and watching the sun melt into the Romanian horizon. ");
+                        FancyPrinter.linebreak();
+                        FancyPrinter.printCenteredln("GAME OVER - YOU WIN!");
+                        FancyPrinter.printCenteredln("*You completed Ending 4: Romaniac* ");
+                        return true;
+                    } else {
+                        FancyPrinter.printWrapln("After considering the ticket purchase, you decide to hit the hay to get ready for tomorrow " + (gameStats.currentDay + 1) + ". ");
+                        gameStats.currentDay += 1;
+                        gameStats.currentTime = 8.00;
+                    }
                 } else {
-                    FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for day " + (gameStats.currentDay + 1) + ". ");
-                    gameStats.currentDay +=1;
+                    System.out.println("");
+                    FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for tomorrow " + (gameStats.currentDay + 1) + ". ");
+                    gameStats.currentDay += 1;
                     gameStats.currentTime = 8.00;
-                } 
+                }
             } else {
                 FancyPrinter.printWrapln("\"I don't have it.\" You check your pockets, but you don't have enough money. \"What do you mean you don't have it? You know the rules!\" A flurry of bullets shreds your wooden door to pieces. You fall to the ground, and the mobster kicks you in the stomach. \"That's why you don't disrespect the mafia buddy.\" You feel your vision fading as the bullets punch into you, and realize that this is the end. ");
                 FancyPrinter.linebreak();

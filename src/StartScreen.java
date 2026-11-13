@@ -45,6 +45,7 @@ public class StartScreen {
             StartScreen.endingsScreen(littledaddy);
         } else {
             System.out.print(CenterString.space("---You closed the game.---"));
+            System.out.println("");
         }
     }
 
@@ -54,12 +55,12 @@ public class StartScreen {
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ENDINGS--"));
         FancyPrinter.println("Ending 1: Swimming With the Fishes ", customprintspeed);
         FancyPrinter.println("Ending 2: Sleeping With the Fishes ", customprintspeed);
-        FancyPrinter.println("Ending 3: ", customprintspeed);
-        FancyPrinter.println("Ending 4: ", customprintspeed);
-        FancyPrinter.println("Ending 5: ", customprintspeed);
-        FancyPrinter.println("Secret Ending: ???" + "\n", customprintspeed);
+        FancyPrinter.println("Ending 3: Swimming WITH the Fishes ", customprintspeed);
+        FancyPrinter.println("Ending 4: Romaniac ", customprintspeed);
+        FancyPrinter.println("Ending 5: Gigachad Romaniac ", customprintspeed);
+        FancyPrinter.println("Secret Ending: ???" + "\n ", customprintspeed);
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ACHIEVEMENTS--"));
-        FancyPrinter.println("Achievement 1: God of Chili's");
+        FancyPrinter.println("Achievement 1: God of Chili's ");
         System.out.println("");
         FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ", customprintspeed);
         StartScreen.endingsinputcheck(littledaddy);
@@ -75,6 +76,7 @@ public class StartScreen {
             StartScreen.startScreen(littledaddy);
         } else {
             System.out.print(CenterString.space("---You closed the game.---"));
+            System.out.println("");
         }
     }
 }
