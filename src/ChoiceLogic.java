@@ -422,13 +422,17 @@ public class ChoiceLogic {
     public boolean fish(boolean rare) {
         int fishcount = (int) (Math.random() * 8) + 3;
         int profit;
+        //These were System.out.println()s, but I remembered that println() doesn't sleep if the input has no space in it
         for (int c = 0; c <= fishcount; c++) {
-            System.out.println("..");
+            FancyPrinter.println("..");
             Wait.ms((int) (Math.random() * 400) + 200);
         }
-        System.out.println("><(((*>");
+        FancyPrinter.println("><(((*>");
         //github copilot said that nanoTime() is better to use than currentTimeMillis() here cause it's more accurate -
         //.nanoTime() is a long by default, and there's no reason to make it a double
+        //11/16/26 - I don't believe github copilot so I went back to currentTimeMillis()
+        //I thought my inputs were getting delayed by it, in reality the IDE I was using didn't render the terminal as fast as VS Code
+        //I can change the reaction times to be a little tighter now because the input is faster on VS Code
         long startTime = System.currentTimeMillis();
         String response = tinydaddy.nextLine().trim();
         double reactionTimeMs = (System.currentTimeMillis() - startTime);
@@ -440,7 +444,7 @@ public class ChoiceLogic {
             FancyPrinter.println("You mess up reeling and your line snaps; the fish slips away. ");
             return false;
         }
-        if (reactionTimeMs <= 600) {
+        if (reactionTimeMs <= 500) {
             if (rare) {
                 FancyPrinter.println("Incredible reaction! You catch a rare fish in perfect condition! ");
                 profit = (int) (Math.random()*6) + 18;
@@ -456,7 +460,7 @@ public class ChoiceLogic {
             }
             return true;
         }
-        if (reactionTimeMs <= 1800) {
+        if (reactionTimeMs <= 1200) {
             if (rare) {
                 FancyPrinter.println("You catch a rare fish! ");
                 profit = (int) (Math.random()*2) + 12;
