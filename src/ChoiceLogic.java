@@ -191,7 +191,6 @@ public class ChoiceLogic {
                     FancyPrinter.print("You didn't input an integer. Try again: ");
                     DSinput = tinydaddy.nextLine().trim();
                 }
-                FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
                 double hours = (double) Integer.parseInt(DSinput);
                 if (hours < 0) {
                     FancyPrinter.println("You try to scroll backwards in time, but nothing happens because the developer found this error. ");
@@ -284,7 +283,6 @@ public class ChoiceLogic {
                         gameStats.channelReward += gameStats.channelSubs / 1000;
                     }
                 } else {
-                    System.out.println("");
                     FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for tomorrow " + (gameStats.currentDay + 1) + ". ");
                     gameStats.currentDay += 1;
                     gameStats.currentTime = 8.00;
@@ -347,12 +345,12 @@ public class ChoiceLogic {
                 FancyPrinter.println("You check doordash. You still have an obscene amount of points, and can receive " + gameStats.chiliPoints + " more free Chili's orders. ");
                 return false;
             }
-            case 3: {
+            case 4: {
                 FancyPrinter.println("You close out of the computer and return to the apartment. ");
                 gameStats.gameState = 1;
                 return false;
             }
-            case 4: {
+            case 3: {
                 FancyPrinter.println("You log into Youtube Studio and claim " + gameStats.channelReward + "$. You have " + gameStats.channelSubs + " subscribers. ");
                 gameStats.currentMoney += gameStats.channelReward;
                 gameStats.choices2b[1] = true;
@@ -375,6 +373,7 @@ public class ChoiceLogic {
                 }
                 FancyPrinter.println("You cast out into the lake. ");
                 FancyPrinter.println("Wait for a fish ><(((*> to appear, then quickly input a character to catch it!\n ");
+                Wait.ms(200);
                 boolean fishrare = false;
                 if (Math.random() > .79) {
                     fishrare = true;
@@ -391,7 +390,7 @@ public class ChoiceLogic {
                 }
                 return false;
             }
-            case 1: {
+            case 3: {
                 FancyPrinter.println("You pack up and walk thirty minutes back to the apartment. ");
                 gameStats.currentTime += 0.5;
                 if (gameStats.currentTime >= 20.0) {
@@ -401,14 +400,14 @@ public class ChoiceLogic {
                 gameStats.gameState = 1;
                 return false;
             }
-            case 2: {
+            case 1: {
                 gameStats.fishTimer = true;
                 gameStats.choices3b[2] = false;
                 gameStats.choices3b[3] = true;
                 FancyPrinter.println("Catch timer enabled. Your reaction time will be shown after each cast. ");
                 return false;
             }
-            case 3: {
+            case 2: {
                 gameStats.fishTimer = false;
                 gameStats.choices3b[2] = true;
                 gameStats.choices3b[3] = false;
@@ -428,12 +427,13 @@ public class ChoiceLogic {
             Wait.ms((int) (Math.random() * 400) + 200);
         }
         System.out.println("><(((*>");
-        //github copilot said that nanoTime() is better to use than currentTimeMillis() here cause it's more accurate
-        long startTime = System.nanoTime();
+        //github copilot said that nanoTime() is better to use than currentTimeMillis() here cause it's more accurate -
+        //.nanoTime() is a long by default, and there's no reason to make it a double
+        long startTime = System.currentTimeMillis();
         String response = tinydaddy.nextLine().trim();
-        double reactionTimeMs = (System.nanoTime() - startTime) / 1_000_000.0;
+        double reactionTimeMs = (System.currentTimeMillis() - startTime);
         if (gameStats.fishTimer) {
-            String printstr = ("" + reactionTimeMs);
+            String printstr = ("" + reactionTimeMs + "ms");
             FancyPrinter.printCharsln(printstr, 10);
         }
         if (response.isEmpty()) {

@@ -135,24 +135,24 @@ public class StatsClass {
         choices2[0] = "Work on the dropshipping business for an hour ";
         choices2[1] = "Edit some ai slop dropshipping videos for Youtube Shorts for three hours ";
         choices2[2] = "Check your remaining doordash points for Chili's ";
-        choices2[3] = "Turn off the computer ";
-        choices2[4] = "Claim your daily Youtube creator program earnings ";
+        choices2[4] = "Turn off the computer ";
+        choices2[3] = "Claim your daily Youtube creator program earnings ";
         choices2b[0] = true;
         choices2b[1] = false;
         choices2b[2] = true;
-        choices2b[3] = true;
         choices2b[4] = true;
+        choices2b[3] = true;
     }
 
     private void setArray3() {
         choices3[0] = "Cast your rod ";
-        choices3[1] = "Go back to the apartment ";
-        choices3[2] = "Turn on catch timer ";
-        choices3[3] = "Turn off catch timer ";
+        choices3[3] = "Go back to the apartment ";
+        choices3[1] = "Turn on catch timer ";
+        choices3[2] = "Turn off catch timer ";
         choices3b[0] = true;
+        choices3b[3] = true;
         choices3b[1] = true;
-        choices3b[2] = true;
-        choices3b[3] = false;
+        choices3b[2] = false;
     }
 
     private void setArray4() {
