@@ -339,6 +339,10 @@ public class ChoiceLogic {
                 if ((gameStats.channelRewardTick * 10) % 10 == 0) {
                     gameStats.channelReward += 1;
                 }
+                if (gameStats.currentTime >= 20.0) {
+                    gameStats.currentTime = 20.0;
+                    return mafiachecks(0);
+                }
                 return false;
             }
             case 2: {
