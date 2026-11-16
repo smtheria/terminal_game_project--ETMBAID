@@ -88,7 +88,7 @@ public class ChoiceLogic {
                 return false;
             }
             case 2: {
-                FancyPrinter.println("You walk thirty minutes to the lake and find a quiet spot to fish.");
+                FancyPrinter.println("You walk thirty minutes to the lake and find a quiet spot to fish. ");
                 gameStats.currentTime += 0.5;
                 if (gameStats.currentTime >= 20.0) {
                     gameStats.currentTime = 20.0;
@@ -98,7 +98,7 @@ public class ChoiceLogic {
                 return false;
             }
             case 3: {
-                FancyPrinter.println("You walk an hour to the casino, where a group of mobsters confronts you. Your story ends here.");
+                FancyPrinter.println("You walk an hour to the casino, where a group of mobsters confronts you. Your story ends here. ");
                 FancyPrinter.linebreak();
                 FancyPrinter.printCenteredln(CenterString.space("GAME OVER "));
                 FancyPrinter.printCenteredln(CenterString.space("*You completed Ending 6: I forgot to code that part* "));
@@ -410,18 +410,19 @@ public class ChoiceLogic {
         int fishcount = (int) (Math.random() * 8) + 3;
         int profit;
         for (int c = 0; c <= fishcount; c++) {
-            FancyPrinter.println("..");
+            System.out.println("..");
             Wait.ms((int) (Math.random() * 400) + 200);
         }
-        FancyPrinter.println("><(((*>");
-        double startTime = (double) System.currentTimeMillis();
+        System.out.println("><(((*>");
+        //github copilot said that nanoTime() is better to use than currentTimeMillis() here cause it's more accurate
+        long startTime = System.nanoTime();
         String response = tinydaddy.nextLine().trim();
-        double reactionTimeMs = (((double) System.currentTimeMillis()) - startTime);
+        double reactionTimeMs = (System.nanoTime() - startTime) / 1_000_000.0;
         if (response.isEmpty()) {
             FancyPrinter.println("You mess up reeling and your line snaps; the fish slips away. ");
             return false;
         }
-        if (reactionTimeMs <= 300) {
+        if (reactionTimeMs <= 600) {
             if (rare) {
                 FancyPrinter.println("Incredible reaction! You catch a rare fish in perfect condition! ");
                 profit = (int) (Math.random()*6) + 18;
@@ -437,7 +438,7 @@ public class ChoiceLogic {
             }
             return true;
         }
-        if (reactionTimeMs <= 1000) {
+        if (reactionTimeMs <= 1800) {
             if (rare) {
                 FancyPrinter.println("You catch a rare fish! ");
                 profit = (int) (Math.random()*2) + 12;
