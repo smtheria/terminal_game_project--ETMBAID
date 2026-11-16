@@ -58,6 +58,7 @@ public class StartScreen {
         FancyPrinter.println("Ending 3: Swimming WITH the Fishes ", customprintspeed);
         FancyPrinter.println("Ending 4: Romaniac ", customprintspeed);
         FancyPrinter.println("Ending 5: Gigachad Romaniac ", customprintspeed);
+        FancyPrinter.println("Ending 6: I forgot to code  part ", customprintspeed);
         FancyPrinter.println("Secret Ending: ???" + "\n ", customprintspeed);
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ACHIEVEMENTS--"));
         FancyPrinter.println("Achievement 1: God of Chili's ");

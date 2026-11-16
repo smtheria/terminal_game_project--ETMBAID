@@ -36,8 +36,16 @@ public class Game {
                 }
                 case 2: {
                     gamefinished = gameLogic.responses2(gameLogic.choice());
+                    break;
                 }
-
+                case 3: {
+                    gamefinished = gameLogic.responses3(gameLogic.choice());
+                    break;
+                }
+                case 4: {
+                    gamefinished = gameLogic.responses4(gameLogic.choice());
+                    break;
+                }
             }
         }
         System.out.println(CenterString.space("---You closed the game.---"));

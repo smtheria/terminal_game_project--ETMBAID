@@ -8,21 +8,26 @@ public class StatsClass {
     public boolean allowDTMdisplay;
     public int lastFridgemeal;
     public int chiliGodcount;
+    public int chiliPoints;
+    public int channelSubs;
+    public int channelReward;
+    public double channelRewardTick;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
     //11/12/26 - You can actually make arrays as big as you want when you instantiate them, just the extra slots are
     //treated as null values inside the index. So imma just set these to 25 (so I don't have to worry about array size when I put new Strings and stuff in)
+    //nope doesn't work cause I check the string length in choice 11/16/26
     String[] nullchoices = new String[1];
     Boolean[] nullchoicesb = new Boolean[1];
-    String[] choices1 = new String[25];
-    Boolean[] choices1b = new Boolean[25];
-    String[] choices2 = new String[25];
-    Boolean[] choices2b = new Boolean[25];
-    String[] choices3 = new String[25];
-    Boolean[] choices3b = new Boolean[25];
-    String[] choices4 = new String[25];
-    Boolean[] choices4b = new Boolean[25];
+    String[] choices1 = new String[10];
+    Boolean[] choices1b = new Boolean[10];
+    String[] choices2 = new String[5];
+    Boolean[] choices2b = new Boolean[5];
+    String[] choices3 = new String[2];
+    Boolean[] choices3b = new Boolean[2];
+    String[] choices4 = new String[2];
+    Boolean[] choices4b = new Boolean[2];
 
     public StatsClass() {
         setStatsInit();
@@ -82,6 +87,11 @@ public class StatsClass {
         //I don't want the ice-soup thing to be the first option cause player might think that's the only one
         lastFridgemeal = 5;
         chiliGodcount = 0;
+        chiliPoints = 10000;
+        channelSubs = (int) (Math.random() * 500) + 300;
+        channelReward = 1;
+        channelRewardTick = 0.0;
+
         setArraysInit();
     }
 
@@ -90,6 +100,8 @@ public class StatsClass {
         nullchoicesb[0] = true;
         setArray1();
         setArray2();
+        setArray3();
+        setArray4();
     }
 
     private void setArray1() {
@@ -116,9 +128,29 @@ public class StatsClass {
     }
 
     private void setArray2() {
-        choices2[0] = "Test choice 1";
-        choices2[1] = "Test choice 2";
+        choices2[0] = "Work on the dropshipping business for an hour ";
+        choices2[1] = "Edit some ai slop dropshipping videos for Youtube Shorts for three hours ";
+        choices2[2] = "Check your remaining doordash points for Chili's ";
+        choices2[3] = "Turn off the computer ";
+        choices2[4] = "Claim your daily Youtube creator program earnings ";
         choices2b[0] = true;
-        choices2b[1] = true;
+        choices2b[1] = false;
+        choices2b[2] = true;
+        choices2b[3] = true;
+        choices2b[4] = true;
+    }
+
+    private void setArray3() {
+        choices3[0] = "Cast your rod ";
+        choices3[1] = "Go back to the apartment ";
+        choices3b[0] = true;
+        choices3b[1] = true;
+    }
+
+    private void setArray4() {
+        choices4[0] = "Test choice 1 ";
+        choices4[1] = "Test choice 2 ";
+        choices4b[0] = true;
+        choices4b[1] = true;
     }
 }

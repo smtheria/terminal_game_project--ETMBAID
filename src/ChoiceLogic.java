@@ -88,14 +88,21 @@ public class ChoiceLogic {
                 return false;
             }
             case 2: {
-                FancyPrinter.println("Nothing happens because this is placeholder code.");
+                FancyPrinter.println("You walk thirty minutes to the lake and find a quiet spot to fish.");
+                gameStats.currentTime += 0.5;
+                if (gameStats.currentTime >= 20.0) {
+                    gameStats.currentTime = 20.0;
+                    return mafiachecks(2);
+                }
                 gameStats.gameState = 3;
                 return false;
             }
             case 3: {
-                FancyPrinter.println("Nothing happens because this is placeholder code.");
-                gameStats.gameState = 4;
-                return false;
+                FancyPrinter.println("You walk an hour to the casino, where a group of mobsters confronts you. Your story ends here.");
+                FancyPrinter.linebreak();
+                FancyPrinter.printCenteredln(CenterString.space("GAME OVER "));
+                FancyPrinter.printCenteredln(CenterString.space("*You completed Ending 6: I forgot to code that part* "));
+                return true;
             }
             case 4: {
                 FancyPrinter.println("The poster: ");
@@ -160,6 +167,7 @@ public class ChoiceLogic {
                         FancyPrinter.println("You ate for 15 minutes. ");
                         gameStats.lastFridgemeal = 4;
                         gameStats.chiliGodcount += 1;
+                        gameStats.chiliPoints -= 1;
                         if (gameStats.chiliGodcount == 5) {
                             System.out.println("");
                             FancyPrinter.println("*You unlocked the achievement: God of Chili's!* ");
@@ -185,10 +193,12 @@ public class ChoiceLogic {
                 }
                 FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
                 double hours = (double) Integer.parseInt(DSinput);
-                if (gameStats.currentTime + hours >= 20) {
+                if (hours > 0) {
+                    FancyPrinter.println("You try to scroll backwards in time, but nothing happens because the developer found this error. ");
+                } else if (gameStats.currentTime + hours >= 20) {
                     gameStats.currentTime = 20.0;
                     FancyPrinter.println("You open up reels and start scrolling, but you get cut short by a sound. ");
-                    return mafiachecks1(0);
+                    return mafiachecks(0);
                 } else {
                     FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
                     gameStats.currentTime += hours;
@@ -204,18 +214,25 @@ public class ChoiceLogic {
                 }
                 FancyPrinter.println("You get back into bed to take a nap during daytime, because you are a bum. You slept for: " + sleepytime + " hours. ");
                 gameStats.currentTime += sleepytime;
-                return mafiachecks1(1);
+                return mafiachecks(1);
             }
             default:
                 FancyPrinter.println(" !!the default case of respond() was triggered!! ");
                 break;
         }
-        return mafiachecks1(0);
+        return mafiachecks(0);
     }
 
-    private boolean mafiachecks1(int deathNum) {
+    private boolean mafiachecks(int deathNum) {
+        System.out.println("");
+        if (deathNum == 2 && gameStats.currentTime >= 20.0) {
+            FancyPrinter.printWrapln("When you get to the lake, a group of thugs is waiting for you. \"You really thought you could hide from us here? You must be stupid or something\". Your body is never found. ");
+            FancyPrinter.linebreak();
+            FancyPrinter.printCenteredln(CenterString.space("GAME OVER "));
+            FancyPrinter.printCenteredln(CenterString.space("*You completed Ending 3: Swimming WITH the Fishes* "));
+            return true;
+        }
         if (deathNum == 1 && gameStats.currentTime >= 20.0) {
-            System.out.println("");
             FancyPrinter.printWrapln("Suddently, you are waken up from your deep sleep to a tommy-gun pressed against your temple. \"Geegee buddy.\" says the mobster. What kind of mobster talks like that? ");
             FancyPrinter.linebreak();
             FancyPrinter.printCenteredln(CenterString.space("GAME OVER "));
@@ -223,7 +240,6 @@ public class ChoiceLogic {
             return true;
         }
         if (deathNum == 0 && gameStats.currentTime == 20.0) {
-            System.out.println("");
             FancyPrinter.printWrapln("It's 20:00, and you hear a loud banging on your door. \"Open up buddy! Daily 25$ protection fee, it's time to pay up!\" ");
             if (gameStats.currentMoney >= 25) {
                 gameStats.currentMoney -= 25;
@@ -248,19 +264,34 @@ public class ChoiceLogic {
                         System.out.println("");
                         FancyPrinter.printWrapln("You open up the computer one last time, buy your ticket, and uber to LaGuardia. The flight is peaceful, and after landing in Romania, Tom Pearl greets you with open arms. Now, you spend your days relaxing at the beach, listening to the rhythmic crash of the waves, and watching the sun melt into the Romanian horizon. ");
                         FancyPrinter.linebreak();
-                        FancyPrinter.printCenteredln("GAME OVER - YOU WIN!");
-                        FancyPrinter.printCenteredln("*You completed Ending 4: Romaniac* ");
-                        return true;
+                        if (gameStats.allowDTMdisplay) {
+                            FancyPrinter.printCenteredln("GAME OVER - YOU WIN!");
+                            FancyPrinter.printCenteredln("*You completed Ending 4: Romaniac* ");
+                            return true;
+                        } else {
+                            FancyPrinter.println("You did all that with no date/time/money counter? thats nuts. ");
+                            FancyPrinter.printCenteredln("GAME OVER - YOU WIN!");
+                            FancyPrinter.printCenteredln("*You completed Ending 5: Gigachad Romaniac* ");
+                            return true;
+                        }
                     } else {
                         FancyPrinter.printWrapln("After considering the ticket purchase, you decide to hit the hay to get ready for tomorrow " + (gameStats.currentDay + 1) + ". ");
                         gameStats.currentDay += 1;
                         gameStats.currentTime = 8.00;
+                        gameStats.choices2b[1] = false;
+                        gameStats.choices2b[4] = true;
+                        gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
+                        gameStats.channelReward += gameStats.channelSubs / 1000;
                     }
                 } else {
                     System.out.println("");
                     FancyPrinter.printWrapln("After handing over the money, you hit the hay to get ready for tomorrow " + (gameStats.currentDay + 1) + ". ");
                     gameStats.currentDay += 1;
                     gameStats.currentTime = 8.00;
+                    gameStats.choices2b[1] = false;
+                    gameStats.choices2b[4] = true;
+                    gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
+                    gameStats.channelReward += gameStats.channelSubs / 1000;
                 }
             } else {
                 FancyPrinter.printWrapln("\"I don't have it.\" You check your pockets, but you don't have enough money. \"What do you mean you don't have it? You know the rules!\" A flurry of bullets shreds your wooden door to pieces. You fall to the ground, and the mobster kicks you in the stomach. \"That's why you don't disrespect the mafia buddy.\" You feel your vision fading as the bullets punch into you, and realize that this is the end. ");
@@ -278,17 +309,143 @@ public class ChoiceLogic {
         System.out.println("");
         switch (input) {
             case 0: {
-                FancyPrinter.println("You Chose test choice 1!");
-                gameStats.choices2b[0] = false;
-                return false;
+                if (Math.random() > 0.5) {
+                    FancyPrinter.println("You spend an hour updating your online listings and answering customers. The work earns you $3. Looks like not many people are in the market for 3d printed dragons right now. ");
+                    gameStats.currentMoney += 3;
+                    gameStats.currentTime += 1.0;
+                    gameStats.gameState = 1;
+                    if (gameStats.currentTime >= 20.0) {
+                        gameStats.currentTime = 20.0;
+                        return mafiachecks(0);
+                    }
+                    return false;
+                } else {
+                    FancyPrinter.println("You try to work on your online listings, but your losing money somehow? Your suppliers have raised some prices, and your out five dollars. ");
+                    gameStats.currentMoney -= 5;
+                    gameStats.currentTime += 1.0;
+                    gameStats.gameState = 1;
+                    if (gameStats.currentTime >= 20.0) {
+                        gameStats.currentTime = 20.0;
+                        return mafiachecks(0);
+                    }
+                    return false;
+                }
             }
             case 1: {
-                FancyPrinter.println("You Chose test choice 2!");
-                gameStats.choices2b[1] = false;
+                FancyPrinter.println("You generate some new videos with Sora 2, make some edits, and post to Youtube Shorts. The growth is gonna be crazy! ");
+                gameStats.currentTime += 3.0;
+                gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
+                gameStats.channelRewardTick += 0.25;
+                if ((gameStats.channelRewardTick * 10) % 10 == 0) {
+                    gameStats.channelReward += 1;
+                }
+                return false;
+            }
+            case 2: {
+                FancyPrinter.println("You check doordash. You still have an obscene amount of points, and can receive " + gameStats.chiliPoints + " more free Chili's orders. ");
+                return false;
+            }
+            case 3: {
+                FancyPrinter.println("You close out of the computer and return to the apartment. ");
+                gameStats.gameState = 1;
+                return false;
+            }
+            case 4: {
+                FancyPrinter.println("You log into Youtube Studio and claim " + gameStats.channelReward + "$. You have " + gameStats.channelSubs + " subscribers. ");
+                gameStats.currentMoney += gameStats.channelReward;
+                gameStats.choices2b[1] = true;
+                gameStats.choices2b[4] = false;
                 return false;
             }
         }
         FancyPrinter.println("Something went wrong in responses2()");
+        return true;
+    }
+
+    public boolean responses3(String choiceindex) {
+        int input = Integer.parseInt(choiceindex);
+        System.out.println("");
+        switch (input) {
+            case 0: {
+                if (gameStats.currentTime >= 20.0) {
+                    gameStats.currentTime = 20.0;
+                    return mafiachecks(2);
+                }
+                FancyPrinter.println("You cast out into the lake. ");
+                FancyPrinter.println("Wait for a fish ><(((*> to appear, then quickly input a character to catch it!");
+                boolean fishrare = false;
+                if (Math.random() > .79) {
+                    fishrare = true;
+                }
+                fish(fishrare);
+                return false;
+            }
+            case 1: {
+                FancyPrinter.println("You pack up and walk thirty minutes back to the apartment. ");
+                gameStats.currentTime += 0.5;
+                if (gameStats.currentTime >= 20.0) {
+                    gameStats.currentTime = 20.0;
+                    return mafiachecks(2);
+                }
+                gameStats.gameState = 1;
+                return false;
+            }
+        }
+        FancyPrinter.println("Something went wrong in responses3()");
+        return true;
+    }
+
+    public boolean fish(boolean rare) {
+        int fishcount = (int) (Math.random() * 8) + 3;
+        for (int c = 0; c <= fishcount; c++) {
+            FancyPrinter.println("..");
+            Wait.ms((int) (Math.random() * 400) + 200);
+        }
+        FancyPrinter.println("><(((*>");
+        double startTime = (double) System.currentTimeMillis();
+        String response = tinydaddy.nextLine().trim();
+        double reactionTimeMs = (((double) System.currentTimeMillis()) - startTime);
+        if (response.isEmpty()) {
+            FancyPrinter.println("You mess up reeling and your line snaps; the fish slips away. ");
+            return false;
+        }
+        if (reactionTimeMs <= 300) {
+            if (rare) {
+                FancyPrinter.println("Incredible reaction! You catch a rare fish in perfect condition! ");
+            } else {
+                FancyPrinter.println("Incredible reaction! You catch the fish in perfect condition! ");
+            }
+            return true;
+        }
+        if (reactionTimeMs <= 1000) {
+            if (rare) {
+                FancyPrinter.println("Incredible reaction! You catch a rare fish! ");
+            } else {
+                FancyPrinter.println("Incredible reaction! You catch the fish! ");
+            }
+            return true;
+        }
+        FancyPrinter.println("You react too slowly, and the fish gets away. ");
+        return false;
+    }
+
+    //untouched; maybe if I ever revisit this game later
+    public boolean responses4(String choiceindex) {
+        int input = Integer.parseInt(choiceindex);
+        System.out.println("");
+        switch (input) {
+            case 0: {
+                FancyPrinter.println("You Chose test choice 1!");
+                gameStats.choices4b[0] = false;
+                return false;
+            }
+            case 1: {
+                FancyPrinter.println("You Chose test choice 2!");
+                gameStats.choices4b[1] = false;
+                return false;
+            }
+        }
+        FancyPrinter.println("Something went wrong in responses4()");
         return true;
     }
 }
