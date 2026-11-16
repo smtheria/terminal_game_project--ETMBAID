@@ -63,6 +63,7 @@ public class StartScreen {
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ACHIEVEMENTS--"));
         FancyPrinter.println("Achievement 1: God of Chili's ");
         FancyPrinter.println("Achievement 2: Fishy Boi ");
+        FancyPrinter.println("Achievement 3: Content Creator! ");
         System.out.println("");
         FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ", customprintspeed);
         StartScreen.endingsinputcheck(littledaddy);
@@ -80,5 +81,11 @@ public class StartScreen {
             System.out.print(CenterString.space("---You closed the game.---"));
             System.out.println("");
         }
+    }
+
+    public static void callNewGame(Scanner littledaddy) {
+        FancyPrinter.linebreak();
+        Game game = new Game(littledaddy);
+        game.start();
     }
 }

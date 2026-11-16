@@ -14,6 +14,8 @@ public class StatsClass {
     public double channelRewardTick;
     public int fishCaught;
     public boolean fishTimer;
+    public boolean subsA;
+    public boolean subsB;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
@@ -95,7 +97,8 @@ public class StatsClass {
         channelRewardTick = 0.0;
         fishCaught = 0;
         fishTimer = false;
-
+        subsA = false;
+        subsB = false;
         setArraysInit();
     }
 

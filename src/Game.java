@@ -48,7 +48,23 @@ public class Game {
                 }
             }
         }
+        playAgain();
+    }
+
+    public void playAgain() {
+        System.out.println("");
+        FancyPrinter.print("Would you like to play again? (y/n): ");
+        String input = tinydaddy.nextLine().trim();
+        while (!(input.equals("y") || input.equals("n"))) {
+            FancyPrinter.print("You didn't choose a valid option. Select again: ");
+            input = tinydaddy.nextLine().trim();
+        }
+        if (input.equals("y")) {
+            StartScreen.callNewGame(tinydaddy);
+        } else {
         System.out.println(CenterString.space("---You closed the game.---"));
         System.out.println("");
+        }
+    
     }
 }

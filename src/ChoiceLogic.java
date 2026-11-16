@@ -331,9 +331,9 @@ public class ChoiceLogic {
                 FancyPrinter.println("You generate some new videos with Sora 2, make some edits, and post to Youtube Shorts. The growth is gonna be crazy! ");
                 gameStats.currentTime += 3.0;
                 gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
-                gameStats.channelRewardTick += 0.25;
+                gameStats.channelRewardTick += 0.50;
                 if ((gameStats.channelRewardTick * 10) % 10 == 0) {
-                    gameStats.channelReward += 1;
+                    gameStats.channelReward += 3;
                 }
                 if (gameStats.currentTime >= 20.0) {
                     gameStats.currentTime = 20.0;
@@ -352,6 +352,13 @@ public class ChoiceLogic {
             }
             case 3: {
                 FancyPrinter.println("You log into Youtube Studio and claim " + gameStats.channelReward + "$. You have " + gameStats.channelSubs + " subscribers. ");
+                if (gameStats.channelSubs >= 10000) {
+                    gameStats.subsA = true;
+                }
+                if (gameStats.subsA && !gameStats.subsB) {
+                    FancyPrinter.println("*You unlocked the achievement: Content Creator!* ");
+                    gameStats.subsB = true;
+                }
                 gameStats.currentMoney += gameStats.channelReward;
                 gameStats.choices2b[1] = true;
                 gameStats.choices2b[4] = false;
