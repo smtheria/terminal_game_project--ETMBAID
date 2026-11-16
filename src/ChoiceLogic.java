@@ -391,6 +391,10 @@ public class ChoiceLogic {
                 if (gameStats.fishCaught == 15) {
                     FancyPrinter.println("*You unlocked the achievement: Fishy Boi!* ");
                 }
+                if (gameStats.dirtyCheaterA && !gameStats.dirtyCheaterB) {
+                    FancyPrinter.println("*You unlocked the achievement: Dirty Cheater!* ");
+                    gameStats.dirtyCheaterB = true;
+                }
                 if (gameStats.currentTime >= 20.0) {
                     gameStats.currentTime = 20.0;
                     return mafiachecks(2);
@@ -452,6 +456,10 @@ public class ChoiceLogic {
             return false;
         }
         if (reactionTimeMs <= 500) {
+            if (reactionTimeMs <=10) {
+                FancyPrinter.println("You buffered the input buddy, you'll still get the fish but I saw that! ");
+                gameStats.dirtyCheaterA = true;
+            }
             if (rare) {
                 FancyPrinter.println("Incredible reaction! You catch a rare fish in perfect condition! ");
                 profit = (int) (Math.random()*6) + 18;

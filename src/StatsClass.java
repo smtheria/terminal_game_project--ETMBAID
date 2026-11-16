@@ -16,6 +16,8 @@ public class StatsClass {
     public boolean fishTimer;
     public boolean subsA;
     public boolean subsB;
+    public boolean dirtyCheaterA;
+    public boolean dirtyCheaterB;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
@@ -99,6 +101,8 @@ public class StatsClass {
         fishTimer = false;
         subsA = false;
         subsB = false;
+        dirtyCheaterA = false;
+        dirtyCheaterB = false;
         setArraysInit();
     }
 
