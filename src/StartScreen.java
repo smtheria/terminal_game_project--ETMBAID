@@ -62,6 +62,7 @@ public class StartScreen {
         FancyPrinter.println("Secret Ending: ???" + "\n ", customprintspeed);
         FancyPrinter.printCenteredln(CenterString.space("--POSSIBLE ACHIEVEMENTS--"));
         FancyPrinter.println("Achievement 1: God of Chili's ");
+        FancyPrinter.println("Achievement 2: Fishy Boi ");
         System.out.println("");
         FancyPrinter.print("Press 1 to return to start screen; Press 2 to close the game: ", customprintspeed);
         StartScreen.endingsinputcheck(littledaddy);

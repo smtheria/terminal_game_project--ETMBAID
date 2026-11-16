@@ -12,6 +12,7 @@ public class StatsClass {
     public int channelSubs;
     public int channelReward;
     public double channelRewardTick;
+    public int fishCaught;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
@@ -91,6 +92,7 @@ public class StatsClass {
         channelSubs = (int) (Math.random() * 500) + 300;
         channelReward = 1;
         channelRewardTick = 0.0;
+        fishCaught = 0;
 
         setArraysInit();
     }

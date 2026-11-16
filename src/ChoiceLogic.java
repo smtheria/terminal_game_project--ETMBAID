@@ -193,7 +193,7 @@ public class ChoiceLogic {
                 }
                 FancyPrinter.println("You doomscroll for " + DSinput + " hours.");
                 double hours = (double) Integer.parseInt(DSinput);
-                if (hours > 0) {
+                if (hours < 0) {
                     FancyPrinter.println("You try to scroll backwards in time, but nothing happens because the developer found this error. ");
                 } else if (gameStats.currentTime + hours >= 20) {
                     gameStats.currentTime = 20.0;
@@ -313,7 +313,6 @@ public class ChoiceLogic {
                     FancyPrinter.println("You spend an hour updating your online listings and answering customers. The work earns you $3. Looks like not many people are in the market for 3d printed dragons right now. ");
                     gameStats.currentMoney += 3;
                     gameStats.currentTime += 1.0;
-                    gameStats.gameState = 1;
                     if (gameStats.currentTime >= 20.0) {
                         gameStats.currentTime = 20.0;
                         return mafiachecks(0);
@@ -323,7 +322,6 @@ public class ChoiceLogic {
                     FancyPrinter.println("You try to work on your online listings, but your losing money somehow? Your suppliers have raised some prices, and your out five dollars. ");
                     gameStats.currentMoney -= 5;
                     gameStats.currentTime += 1.0;
-                    gameStats.gameState = 1;
                     if (gameStats.currentTime >= 20.0) {
                         gameStats.currentTime = 20.0;
                         return mafiachecks(0);
@@ -376,12 +374,21 @@ public class ChoiceLogic {
                     return mafiachecks(2);
                 }
                 FancyPrinter.println("You cast out into the lake. ");
-                FancyPrinter.println("Wait for a fish ><(((*> to appear, then quickly input a character to catch it!");
+                FancyPrinter.println("Wait for a fish ><(((*> to appear, then quickly input a character to catch it!\n ");
                 boolean fishrare = false;
                 if (Math.random() > .79) {
                     fishrare = true;
                 }
                 fish(fishrare);
+                FancyPrinter.println("That cast lasted for an hour. ");
+                gameStats.currentTime += 1.0;
+                if (gameStats.fishCaught == 15) {
+                    FancyPrinter.println("*You unlocked the achievement: Fishy Boi!* ");
+                }
+                if (gameStats.currentTime >= 20.0) {
+                    gameStats.currentTime = 20.0;
+                    return mafiachecks(2);
+                }
                 return false;
             }
             case 1: {
@@ -401,6 +408,7 @@ public class ChoiceLogic {
 
     public boolean fish(boolean rare) {
         int fishcount = (int) (Math.random() * 8) + 3;
+        int profit;
         for (int c = 0; c <= fishcount; c++) {
             FancyPrinter.println("..");
             Wait.ms((int) (Math.random() * 400) + 200);
@@ -416,16 +424,32 @@ public class ChoiceLogic {
         if (reactionTimeMs <= 300) {
             if (rare) {
                 FancyPrinter.println("Incredible reaction! You catch a rare fish in perfect condition! ");
+                profit = (int) (Math.random()*6) + 18;
+                FancyPrinter.println("The fish sells for " + profit + "$. ");
+                gameStats.currentMoney += profit;
+                gameStats.fishCaught += 1;
             } else {
                 FancyPrinter.println("Incredible reaction! You catch the fish in perfect condition! ");
+                profit = (int) (Math.random()*5) + 10;
+                FancyPrinter.println("The fish sells for " + profit + "$. ");
+                gameStats.currentMoney += profit;
+                gameStats.fishCaught += 1;
             }
             return true;
         }
         if (reactionTimeMs <= 1000) {
             if (rare) {
-                FancyPrinter.println("Incredible reaction! You catch a rare fish! ");
+                FancyPrinter.println("You catch a rare fish! ");
+                profit = (int) (Math.random()*2) + 12;
+                FancyPrinter.println("The fish sells for " + profit + "$. ");
+                gameStats.currentMoney += profit;
+                gameStats.fishCaught += 1;
             } else {
-                FancyPrinter.println("Incredible reaction! You catch the fish! ");
+                FancyPrinter.println("You catch the fish! ");
+                profit = (int) (Math.random()*2) + 6;
+                FancyPrinter.println("The fish sells for " + profit + "$. ");
+                gameStats.currentMoney += profit;
+                gameStats.fishCaught += 1;
             }
             return true;
         }
