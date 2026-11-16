@@ -278,7 +278,7 @@ public class ChoiceLogic {
                         gameStats.currentDay += 1;
                         gameStats.currentTime = 8.00;
                         gameStats.choices2b[1] = false;
-                        gameStats.choices2b[4] = true;
+                        gameStats.choices2b[3] = true;
                         gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
                         gameStats.channelReward += gameStats.channelSubs / 1000;
                     }
@@ -287,7 +287,7 @@ public class ChoiceLogic {
                     gameStats.currentDay += 1;
                     gameStats.currentTime = 8.00;
                     gameStats.choices2b[1] = false;
-                    gameStats.choices2b[4] = true;
+                    gameStats.choices2b[3] = true;
                     gameStats.channelSubs += (int) ((Math.random() * 300) + 50);
                     gameStats.channelReward += gameStats.channelSubs / 1000;
                 }
@@ -361,7 +361,7 @@ public class ChoiceLogic {
                 }
                 gameStats.currentMoney += gameStats.channelReward;
                 gameStats.choices2b[1] = true;
-                gameStats.choices2b[4] = false;
+                gameStats.choices2b[3] = false;
                 return false;
             }
         }
