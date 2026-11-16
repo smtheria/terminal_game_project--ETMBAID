@@ -401,6 +401,20 @@ public class ChoiceLogic {
                 gameStats.gameState = 1;
                 return false;
             }
+            case 2: {
+                gameStats.fishTimer = true;
+                gameStats.choices3b[2] = false;
+                gameStats.choices3b[3] = true;
+                FancyPrinter.println("Catch timer enabled. Your reaction time will be shown after each cast. ");
+                return false;
+            }
+            case 3: {
+                gameStats.fishTimer = false;
+                gameStats.choices3b[2] = true;
+                gameStats.choices3b[3] = false;
+                FancyPrinter.println("Catch timer disabled. ");
+                return false;
+            }
         }
         FancyPrinter.println("Something went wrong in responses3()");
         return true;
@@ -418,6 +432,10 @@ public class ChoiceLogic {
         long startTime = System.nanoTime();
         String response = tinydaddy.nextLine().trim();
         double reactionTimeMs = (System.nanoTime() - startTime) / 1_000_000.0;
+        if (gameStats.fishTimer) {
+            String printstr = ("" + reactionTimeMs);
+            FancyPrinter.printCharsln(printstr, 10);
+        }
         if (response.isEmpty()) {
             FancyPrinter.println("You mess up reeling and your line snaps; the fish slips away. ");
             return false;

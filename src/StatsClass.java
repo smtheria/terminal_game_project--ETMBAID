@@ -13,6 +13,7 @@ public class StatsClass {
     public int channelReward;
     public double channelRewardTick;
     public int fishCaught;
+    public boolean fishTimer;
 
     //The plan is for gameState 1 to be the room, gameState 2 as the computer,
     // gameState 3 as fishing and gameState 4 as blackjack
@@ -25,8 +26,8 @@ public class StatsClass {
     Boolean[] choices1b = new Boolean[10];
     String[] choices2 = new String[5];
     Boolean[] choices2b = new Boolean[5];
-    String[] choices3 = new String[2];
-    Boolean[] choices3b = new Boolean[2];
+    String[] choices3 = new String[4];
+    Boolean[] choices3b = new Boolean[4];
     String[] choices4 = new String[2];
     Boolean[] choices4b = new Boolean[2];
 
@@ -93,6 +94,7 @@ public class StatsClass {
         channelReward = 1;
         channelRewardTick = 0.0;
         fishCaught = 0;
+        fishTimer = false;
 
         setArraysInit();
     }
@@ -145,8 +147,12 @@ public class StatsClass {
     private void setArray3() {
         choices3[0] = "Cast your rod ";
         choices3[1] = "Go back to the apartment ";
+        choices3[2] = "Turn on catch timer ";
+        choices3[3] = "Turn off catch timer ";
         choices3b[0] = true;
         choices3b[1] = true;
+        choices3b[2] = true;
+        choices3b[3] = false;
     }
 
     private void setArray4() {
