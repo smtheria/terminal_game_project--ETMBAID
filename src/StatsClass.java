@@ -84,7 +84,7 @@ public class StatsClass {
         gameState = 1;
         currentDay = 1;
         currentTime = 8.00;
-        currentMoney = 100;
+        currentMoney = 32;
         allowDTMdisplay = false;
         //I don't want the ice-soup thing to be the first option cause player might think that's the only one
         lastFridgemeal = 5;
